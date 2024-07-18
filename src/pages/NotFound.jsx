@@ -1,7 +1,9 @@
+import NotFoundComponent from "../components/NotFoundComponent";
+
 function NotFound() {
   return (
     <>
-      <h1>Página de NotFound</h1>
+      <NotFoundComponent />
     </>
   );
 }
