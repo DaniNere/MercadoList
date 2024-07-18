@@ -1,0 +1,33 @@
+.container-navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #11afd1;
+  align-items: center;
+  padding: 0 50px 0 50px;
+}
+
+.container-navbar ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.container-navbar ul li {
+  margin-right: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+.container-navbar ul li:last-child {
+  margin-right: 0;
+}
+
+.logo_mercadolist {
+  width: 150px;
+  height: auto;
+  position: relative;
+  right: 40px;
+  cursor: pointer;
+}
