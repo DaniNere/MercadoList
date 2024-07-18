@@ -1,0 +1,32 @@
+.container-footer {
+  width: 100%;
+  background-color: #11afd1;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 300px;
+  position: absolute;
+  bottom: 0;
+}
+.container-footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.footer-links {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-links li {
+  margin: 0 15px;
+  font-size: 14px;
+  cursor: pointer;
+}
