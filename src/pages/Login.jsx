@@ -28,10 +28,10 @@ function Login() {
   }
 
   return (
-    <main>
+    <main className="container">
       <form className="form-section" onSubmit={handleSubmit(entrar)}>
         <h1>Login</h1>
-        <hr />
+       
         <div>
           <label htmlFor="email">Email</label>
           <input

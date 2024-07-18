@@ -7,25 +7,26 @@
     color: red;
 }
 
-main {
-    width: 100%;
-    max-width: 400px;
-    background-color: #fff;
-    padding: 20px;
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px !important;
+    padding:20px;
+    max-width: 100%;
+    background-color: #F2F2F2;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 4rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ajustada conforme necessário */
+    margin-top: 2rem; /* Ajuste de margem superior */
     margin-bottom: auto;
-  }
+}
+
   
   h1 {
     text-align: center;
     color: #333;
   }
   
-  hr {
-    margin: 20px 0;
-  }
   
   .form-section {
     display: flex;
@@ -83,7 +84,7 @@ main {
   }
   
   button.variant-dark:hover {
-    background-color: #11AFD1;
+    background-color: #11afd1;
   }
   
   button.variant-danger {
