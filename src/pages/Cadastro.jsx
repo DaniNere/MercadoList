@@ -26,7 +26,11 @@ function Cadastro() {
       toast.success(`Bem-vindo(a)! ${data.nome}. Verifique seu e-mail.`);
       navigate("/");
     } catch (error) {
-      toast.error("Um erro aconteceu! " );
+
+      toast.error("Um erro aconteceu! ");
+
+     
+
     }
   }
 
@@ -36,47 +40,49 @@ function Cadastro() {
       toast.success("Bem-vindo(a)!");
       navigate("/");
     } catch (error) {
-      toast.error("Um erro aconteceu! " );
+
+      toast.error("Um erro aconteceu! ");
+    
+
     }
   }
 
   return (
-    <main className="container">
-      <form className="form-section" onSubmit={handleSubmit(cadastrar)}>
-        <h1>Cadastro</h1>
-        <hr />
+    <main className="cadastro-container">
+      <form className="cadastro-form-section" onSubmit={handleSubmit(cadastrar)}>
+        <h1 className="cadastro-h1">Cadastro</h1>
         <div>
-          <label htmlFor="nome">Nome</label>
+          <label htmlFor="nome" className="cadastro-label">Nome</label>
           <input
             type="text"
             id="nome"
-            className="form-control"
+            className="cadastro-input form-control"
             placeholder="Digite seu nome"
             {...register("nome", { required: true, maxLength: 150 })}
           />
           {errors.nome && (
-            <small className="invalid">O nome é inválido!</small>
+            <small className="cadastro-small invalid">O nome é inválido!</small>
           )}
         </div>
         <div>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" className="cadastro-label">Email</label>
           <input
             type="email"
             id="email"
-            className="form-control"
+            className="cadastro-input form-control"
             placeholder="Digite seu e-mail"
             {...register("email", { required: true })}
           />
           {errors.email && (
-            <small className="invalid">O email é inválido!</small>
+            <small className="cadastro-small invalid">O email é inválido!</small>
           )}
         </div>
         <div>
-          <label htmlFor="senha">Senha</label>
+          <label htmlFor="senha" className="cadastro-label">Senha</label>
           <input
             type="password"
             id="senha"
-            className="form-control"
+            className="cadastro-input form-control"
             placeholder="Digite sua senha"
             {...register("senha", {
               required: "A senha é obrigatória",
@@ -87,16 +93,16 @@ function Cadastro() {
             })}
           />
           {errors.senha && (
-            <small className="invalid">{errors.senha.message}</small>
+            <small className="cadastro-small invalid">{errors.senha.message}</small>
           )}
         </div>
         <div className="mt-4">
-          <Button className="mt-1 w-100 btn-custom" type="submit">
+          <Button className="cadastro-button mt-1 w-100 btn-custom" type="submit">
             Cadastrar
           </Button>
           <Button
             variant="danger"
-            className="mt-1 w-100 btn-google"
+            className="cadastro-button mt-1 w-100 btn-google"
             type="button"
             onClick={handleEntrarGoogle}
           >

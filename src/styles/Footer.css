@@ -8,12 +8,13 @@
   justify-content: center;
   align-items: center;
   gap: 300px;
-  position: absolute;
+  position: relative;
   bottom: 0;
 }
 .container-footer p {
   margin: 0;
   font-size: 14px;
+
 }
 
 .footer-links {

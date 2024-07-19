@@ -41,44 +41,44 @@ function Login() {
   }
 
   return (
-    <main className="container">
-      <form className="form-section" onSubmit={handleSubmit(entrar)}>
-        <h1>Login</h1>
+    <main className="login-container">
+      <form className="login-form-section" onSubmit={handleSubmit(entrar)}>
+        <h1 className="login-h1">Login</h1>
 
         <div>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" className="login-label">Email</label>
           <input
             type="email"
             id="email"
-            className="form-control"
+            className="login-input form-control"
             {...register("email", { required: "O email é obrigatório" })}
           />
           {errors.email && (
-            <small className="invalid">{errors.email.message}</small>
+            <small className="login-small invalid">{errors.email.message}</small>
           )}
         </div>
         <div>
-          <label htmlFor="senha">Senha</label>
+          <label htmlFor="senha" className="login-label">Senha</label>
           <input
             type="password"
             id="senha"
-            className="form-control"
+            className="login-input form-control"
             {...register("senha", {
               required: "A senha é obrigatória",
               minLength: { value: 6, message: "Mínimo de 6 caracteres." },
             })}
           />
           {errors.senha && (
-            <small className="invalid">{errors.senha.message}</small>
+            <small className="login-small invalid">{errors.senha.message}</small>
           )}
         </div>
-        <Button className="mt-1 w-100 btn-custom" type="submit">
+        <Button className="login-button mt-1 w-100 btn-custom" type="submit">
           Entrar
         </Button>
         <Button
           onClick={handleEntrarGoogle}
           variant="danger"
-          className="mt-1 w-100 btn-google"
+          className="mt-1 w-100"
           type="button"
         >
           <FaGoogle className="icon-google" />
