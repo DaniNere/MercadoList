@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 import "../styles/Cadastro.css";
 import { FaGoogle } from "react-icons/fa";
+import { cadastrarUsuario, entrarGoogle } from "../firebase/auth";
 
 function Cadastro() {
   const {
@@ -27,7 +28,10 @@ function Cadastro() {
   }
 
   function handleEntrarGoogle() {
-    // lógica para login com Google
+    entrarGoogle().then(() => {
+      toast.success("Bem vindo (a)!");
+      navigate("/");
+    });
   }
 
   return (
