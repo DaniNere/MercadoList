@@ -1,5 +1,9 @@
 .form-section {
+
     width: 360px;
+
+  
+
     margin: 16px auto;
   }
   
@@ -11,7 +15,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     width: 360px !important;
+
+  
+
     padding: 20px;
     max-width: 100%;
     background-color: #F2F2F2;
@@ -72,7 +80,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     gap: 30px;
+
   }
   
   button.mt-1 {

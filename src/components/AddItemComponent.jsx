@@ -107,7 +107,10 @@ function AddItemComponent() {
                     <textarea
                         id="descricao"
                         className="form-control"
+
                         {...register("descricao", { required: true, maxLength: 150 })}
+
+
                     ></textarea>
                     {errors.descricao && <small className="invalid">A descrição é inválida</small>}
                 </div>
