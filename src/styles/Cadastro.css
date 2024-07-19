@@ -1,5 +1,4 @@
-/* CSS específico para o Cadastro */
-.cadastro-form-section {
+.form-section {
   width: 320px;
   margin: 16px auto;
 }
@@ -94,4 +93,20 @@
 
 .cadastro-button.variant-danger:hover {
   background-color: #c82333;
+}
+
+.btn-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.icon-google {
+  margin-right: 10px; /* Ajuste o espaçamento conforme necessário */
+}
+
+.btn-text {
+  flex: 1;
+  text-align: center;
 }
