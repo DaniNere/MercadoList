@@ -101,7 +101,7 @@ function Cadastro() {
             onClick={handleEntrarGoogle}
           >
             <FaGoogle className="icon-google" />
-            <span className="btn-text">Entrar com Google</span>
+            <span className="btn-text">Cadastrar com Google</span>
           </Button>
         </div>
       </form>
