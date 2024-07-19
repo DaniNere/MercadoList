@@ -21,8 +21,8 @@ function Login() {
   function entrar(data) {
     loginUsuario(data.email, data.senha)
       .then(() => {
-        toast.success("Bem-vindo(a)!");
-        navigate("/tarefas");
+        toast.success(`Bem-vindo(a)!`);
+        navigate("/lista-de-compras");
       })
       .catch(() => {
         toast.error("Email e/ou senha incorreta!");
