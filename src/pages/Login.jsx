@@ -1,11 +1,13 @@
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
+import { entrarGoogle, loginUsuario } from "../firebase/auth";
+import { UsuarioContext } from "../contexts/UsuarioContext";
+import { useContext } from "react";
 import "../styles/Login.css";
 
 function Login() {
-  
   const {
     register,
     handleSubmit,
@@ -13,25 +15,35 @@ function Login() {
   } = useForm();
 
   const navigate = useNavigate();
+  const usuario = useContext(UsuarioContext);
 
   function entrar(data) {
-    loginUsuario(data.email, data.senha).then(() => {
-      toast.success("Bem-vindo(a)!");
-      navigate("/tarefas");
-    }).catch(() => {
-      toast.error("Email e/ou senha incorreta!");
-    });
+    loginUsuario(data.email, data.senha)
+      .then(() => {
+        toast.success("Bem-vindo(a)!");
+        navigate("/tarefas");
+      })
+      .catch(() => {
+        toast.error("Email e/ou senha incorreta!");
+      });
   }
 
   function handleEntrarGoogle() {
-    // lógica para login com Google
+    entrarGoogle().then(() => {
+      toast.success("Bem vindo!");
+      navigate("/lista-de-compras");
+    });
+  }
+
+  if (usuario !== null) {
+    return <Navigate to="/lista-de-compras" />;
   }
 
   return (
     <main className="container">
       <form className="form-section" onSubmit={handleSubmit(entrar)}>
         <h1>Login</h1>
-       
+
         <div>
           <label htmlFor="email">Email</label>
           <input
