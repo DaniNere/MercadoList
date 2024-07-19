@@ -30,6 +30,9 @@ function Navbar() {
         )}
         {!usuario && <Link to="/cadastro">Cadastro</Link>}
         {usuario && <Link to="/lista-de-compras">Lista de Compras</Link>}
+        {usuario && (
+          <span className="text-light nav-link mx-3">{usuario.displayName}</span>
+        )}
         {usuario && <Link onClick={handleLogout}>Logout</Link>}
       </ul>
     </nav>

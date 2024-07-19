@@ -26,7 +26,7 @@ function Cadastro() {
       toast.success(`Bem-vindo(a)! ${data.nome}. Verifique seu e-mail.`);
       navigate("/");
     } catch (error) {
-      toast.error("Um erro aconteceu! " + error.message);
+      toast.error("Um erro aconteceu! " );
     }
   }
 
@@ -36,7 +36,7 @@ function Cadastro() {
       toast.success("Bem-vindo(a)!");
       navigate("/");
     } catch (error) {
-      toast.error("Um erro aconteceu! " + error.message);
+      toast.error("Um erro aconteceu! " );
     }
   }
 
