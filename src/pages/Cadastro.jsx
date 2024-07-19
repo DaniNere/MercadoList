@@ -20,7 +20,7 @@ function Cadastro() {
     cadastrarUsuario(data.nome, data.email, data.senha)
       .then(() => {
         toast.success(`Bem vindo (a)! ${data.nome}`);
-        navigate("/tarefas");
+        navigate("/");
       })
       .catch((error) => {
         toast.error("Um erro aconteceu!" + error.code);
