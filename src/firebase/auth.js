@@ -9,19 +9,40 @@ import {
 import { auth } from "./config";
 
 export async function cadastrarUsuario(nome, email, senha) {
-  const { user } = await createUserWithEmailAndPassword(auth, email, senha);
-  await updateProfile(user, { displayName: nome });
+  try {
+    const { user } = await createUserWithEmailAndPassword(auth, email, senha);
+    await updateProfile(user, { displayName: nome });
+    return user;
+  } catch (error) {
+    console.error("Erro ao cadastrar usuário:", error);
+    throw error;
+  }
 }
 
 export async function entrarGoogle() {
   const provider = new GoogleAuthProvider();
-  await signInWithPopup(auth, provider);
+  try {
+    await signInWithPopup(auth, provider);
+  } catch (error) {
+    console.error("Erro ao entrar com Google:", error);
+    throw error;
+  }
 }
 
 export async function loginUsuario(email, senha) {
-  await signInWithEmailAndPassword(auth, email, senha);
+  try {
+    await signInWithEmailAndPassword(auth, email, senha);
+  } catch (error) {
+    console.error("Erro ao fazer login:", error);
+    throw error;
+  }
 }
 
 export async function logout() {
-  await signOut(auth);
+  try {
+    await signOut(auth);
+  } catch (error) {
+    console.error("Erro ao fazer logout:", error);
+    throw error;
+  }
 }
