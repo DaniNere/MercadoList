@@ -12,7 +12,7 @@
   justify-content: center;
   align-items: center;
   width: 320px !important;
-  padding:20px;
+  padding: 20px;
   max-width: 100%;
   background-color: #F2F2F2;
   border-radius: 8px;
@@ -50,7 +50,7 @@ input.form-control {
 }
 
 input.form-control:focus {
-  border-color: #11afd1;
+  border-color: #80bdff;
   outline: none;
   box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
 }
@@ -83,6 +83,15 @@ button.btn-custom {
 
 button.btn-custom:hover {
   background-color: #0f96b4; /* Remove o efeito de hover */
+}
+
+button.variant-dark {
+  background-color: #010337;
+  color: #fff;
+}
+
+button.variant-dark:hover {
+  background-color: #010337; /* Remove o efeito de hover */
 }
 
 button.variant-danger {
