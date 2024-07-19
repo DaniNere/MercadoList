@@ -6,6 +6,7 @@ import { entrarGoogle, loginUsuario } from "../firebase/auth";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import { useContext } from "react";
 import "../styles/Login.css";
+import { FaGoogle } from "react-icons/fa";
 
 function Login() {
   const {
@@ -77,10 +78,11 @@ function Login() {
         <Button
           onClick={handleEntrarGoogle}
           variant="danger"
-          className="mt-1 w-100"
+          className="mt-1 w-100 btn-google"
           type="button"
         >
-          Entrar com o Google
+          <FaGoogle className="icon-google" />
+          <span>Entrar com o Google</span>
         </Button>
       </form>
     </main>

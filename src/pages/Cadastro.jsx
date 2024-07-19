@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { getAuth, sendEmailVerification } from "firebase/auth";
 import "../styles/Login.css";
 import "../styles/Cadastro.css";
-import { FaGoogle } from "react-icons/fa";
 import { cadastrarUsuario, entrarGoogle } from "../firebase/auth";
+import { FaGoogle } from "react-icons/fa";
 
 function Cadastro() {
   const {
@@ -96,11 +96,12 @@ function Cadastro() {
           </Button>
           <Button
             variant="danger"
-            className="mt-1 w-100"
+            className="mt-1 w-100 btn-google"
             type="button"
             onClick={handleEntrarGoogle}
           >
-            Entrar com Google
+            <FaGoogle className="icon-google" />
+            <span className="btn-text">Entrar com Google</span>
           </Button>
         </div>
       </form>
