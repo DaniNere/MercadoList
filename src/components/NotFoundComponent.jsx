@@ -3,6 +3,7 @@ import erro from "../assets/erro.png";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+
 function NotFoundComponent() {
     return (
         <>
