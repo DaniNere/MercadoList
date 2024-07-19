@@ -1,7 +1,9 @@
+import AddItemComponent from "../components/AddItemComponent";
+
 function AdicionarItem() {
   return (
     <>
-      <h1>Página de Adicionar Item</h1>
+      <h1>Página de Adicionar Item <AddItemComponent /></h1>
     </>
   );
 }
