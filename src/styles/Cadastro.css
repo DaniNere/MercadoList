@@ -1,13 +1,15 @@
+/* Arquivo: Login.css e Cadastro.css */
+
 .form-section {
   width: 320px;
   margin: 16px auto;
 }
 
-.cadastro-invalid {
+.invalid {
   color: red;
 }
 
-.cadastro-container {
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,31 +20,30 @@
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ajustada conforme necessário */
   margin-top: 2rem; /* Ajuste de margem superior */
-  margin-bottom: 15px !important;
-  margin-left: 32rem;
+  margin-bottom: auto;
 }
 
-.cadastro-h1 {
+h1 {
   text-align: center;
   color: #333;
 }
 
-.cadastro-form-section {
+.form-section {
   display: flex;
   flex-direction: column;
 }
 
-.cadastro-form-section div {
+.form-section div {
   margin-bottom: 15px;
 }
 
-.cadastro-label {
+label {
   margin-bottom: 5px;
   font-weight: bold;
   display: block;
 }
 
-.cadastro-input.form-control {
+input.form-control {
   width: 100%;
   padding: 10px;
   border: 1px solid #ced4da;
@@ -50,18 +51,18 @@
   box-sizing: border-box;
 }
 
-.cadastro-input.form-control:focus {
-  border-color: #11afd1;
+input.form-control:focus {
+  border-color: #80bdff;
   outline: none;
   box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
 }
 
-.cadastro-small.invalid {
+small.invalid {
   color: red;
   font-size: 12px;
 }
 
-.cadastro-button {
+button {
   padding: 10px;
   border: none;
   border-radius: 4px;
@@ -69,29 +70,38 @@
   font-size: 16px;
 }
 
-.cadastro-button.mt-1 {
+button.mt-1 {
   margin-top: 10px;
 }
 
-.cadastro-button.w-100 {
+button.w-100 {
   width: 100%;
 }
 
-.cadastro-button.btn-custom {
+button.btn-custom {
   background-color: #11afd1;
   color: #fff;
 }
 
-.cadastro-button.btn-custom:hover {
+button.btn-custom:hover {
   background-color: #0f96b4; /* Remove o efeito de hover */
 }
 
-.cadastro-button.variant-danger {
+button.variant-dark {
+  background-color: #010337;
+  color: #fff;
+}
+
+button.variant-dark:hover {
+  background-color: #010337; /* Remove o efeito de hover */
+}
+
+button.variant-danger {
   background-color: #dc3545;
   color: #fff;
 }
 
-.cadastro-button.variant-danger:hover {
+button.variant-danger:hover {
   background-color: #c82333;
 }
 

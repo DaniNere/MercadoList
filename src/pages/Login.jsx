@@ -16,7 +16,7 @@ function Login() {
   } = useForm();
 
   const navigate = useNavigate();
-  const usuario = useContext(UsuarioContext);
+  const { usuarioLogado } = useContext(UsuarioContext);
 
   function entrar(data) {
     loginUsuario(data.email, data.senha)
@@ -36,49 +36,49 @@ function Login() {
     });
   }
 
-  if (usuario !== null) {
+  if (usuarioLogado) {
     return <Navigate to="/lista-de-compras" />;
   }
 
   return (
-    <main className="login-container">
-      <form className="login-form-section" onSubmit={handleSubmit(entrar)}>
-        <h1 className="login-h1">Login</h1>
+    <main className="container">
+      <form className="form-section" onSubmit={handleSubmit(entrar)}>
+        <h1>Login</h1>
 
         <div>
-          <label htmlFor="email" className="login-label">Email</label>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
-            className="login-input form-control"
+            className="form-control"
             {...register("email", { required: "O email é obrigatório" })}
           />
           {errors.email && (
-            <small className="login-small invalid">{errors.email.message}</small>
+            <small className="invalid">{errors.email.message}</small>
           )}
         </div>
         <div>
-          <label htmlFor="senha" className="login-label">Senha</label>
+          <label htmlFor="senha">Senha</label>
           <input
             type="password"
             id="senha"
-            className="login-input form-control"
+            className="form-control"
             {...register("senha", {
               required: "A senha é obrigatória",
               minLength: { value: 6, message: "Mínimo de 6 caracteres." },
             })}
           />
           {errors.senha && (
-            <small className="login-small invalid">{errors.senha.message}</small>
+            <small className="invalid">{errors.senha.message}</small>
           )}
         </div>
-        <Button className="login-button mt-1 w-100 btn-custom" type="submit">
+        <Button className="mt-1 w-100 btn-custom" type="submit">
           Entrar
         </Button>
         <Button
           onClick={handleEntrarGoogle}
           variant="danger"
-          className="mt-1 w-100"
+          className="mt-1 w-100 btn-google"
           type="button"
         >
           <FaGoogle className="icon-google" />

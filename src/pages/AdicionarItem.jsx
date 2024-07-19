@@ -3,7 +3,7 @@ import AddItemComponent from "../components/AddItemComponent";
 function AdicionarItem() {
   return (
     <>
-      <AddItemComponent />
+      <h1>Página de Adicionar Item <AddItemComponent /></h1>
     </>
   );
 }
