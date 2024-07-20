@@ -2,102 +2,126 @@ import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import "../styles/Login.css";
-import "../styles/Cadastro.css";
+import "../styles/AddItemComponent.css";
 import { FaGoogle } from "react-icons/fa";
+import { useState } from "react";
 
 function AddItemComponent() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  function cadastrar(data) {
-    cadastrarUsuario(data.nome, data.email, data.senha)
-      .then(() => {
-        toast.success(`Bem vindo (a)! ${data.nome}`);
-        navigate("/tarefas");
-      })
-      .catch((error) => {
-        toast.error("Um erro aconteceu!" + error.code);
-      });
-  }
+    const [numero, setNumero] = useState(0);
 
-  function handleEntrarGoogle() {
-    // lógica para login com Google
-  }
+    function cadastrar(data) {
+        cadastrarUsuario(data.nome, data.preco, data.descricao)
+            .then(() => {
+                toast.success(`Bem vindo (a)! ${data.nome}`);
+                navigate("/tarefas");
+            })
+            .catch((error) => {
+                toast.error("Um erro aconteceu!" + error.code);
+            });
+    }
 
-  return (
-    <>
-      <main className="container">
-        <form className="form-section" onSubmit={handleSubmit(cadastrar)}>
-          <h1>Cadastro</h1>
-          <hr />
-          <div>
-            <label htmlFor="nome">Nome</label>
-            <input
-              type="text"
-              id="nome"
-              className="form-control"
-              placeholder="Digite seu nome"
-              {...register("nome", { required: true, maxLength: 150 })}
-            />
-            {errors.nome && (
-              <small className="invalid">O nome é inválido!</small>
-            )}
-          </div>
-          <div>
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              className="form-control"
-              placeholder="Digite seu e-mail"
-              {...register("email", { required: true })}
-            />
-            {errors.email && (
-              <small className="invalid">O email é inválido!</small>
-            )}
-          </div>
-          <div>
-            <label htmlFor="senha">Senha</label>
-            <input
-              type="password"
-              id="senha"
-              className="form-control"
-              placeholder="Digite sua senha"
-              {...register("senha", {
-                required: "A senha é obrigatória",
-                minLength: {
-                  value: 6,
-                  message: "A senha deve ter acima de 6 caracteres",
-                },
-              })}
-            />
-            {errors.senha && (
-              <small className="invalid">{errors.senha.message}</small>
-            )}
-          </div>
-          <div className="mt-4">
-            <Button className="mt-1 w-100 btn-custom" type="submit">
-              Cadastrar
-            </Button>
-            <Button
-              variant="danger"
-              className="mt-1 w-100"
-              type="button"
-              onClick={handleEntrarGoogle}
-            >
-              Entrar com Google
-            </Button>
-          </div>
-        </form>
-      </main>
-    </>
-  );
+    function handleIncremento() {
+        setNumero(numero + 1);
+    }
+
+    function handleDecremento() {
+        if (numero > 0) {
+            setNumero(numero - 1);
+        }
+    }
+
+    return (
+        <main className="container">
+            <form className="form-section" onSubmit={handleSubmit(cadastrar)}>
+                <h1>Adicionar item</h1>
+                <div>
+                    <label htmlFor="nome">Nome</label>
+                    <input
+                        type="text"
+                        id="nome"
+                        className="form-control"
+                        placeholder="Digite o seu item"
+                        {...register("nome", { required: true, maxLength: 100 })}
+                    />
+                    {errors.nome && (
+                        <small className="invalid">O nome é inválido!</small>
+                    )}
+                </div>
+                <div>
+                    <label htmlFor="preco">Preço</label>
+                    <input
+                        type="number"
+                        id="preco"
+                        className="form-control"
+                        placeholder="Digite o preço"
+                        {...register("preco", { required: true })}
+                    />
+                    {errors.preco && (
+                        <small className="invalid">O preço é inválido!</small>
+                    )}
+                </div>
+                <div>
+                    <label htmlFor="quantidade">Quantidade</label>
+                    <div  className="quantidade">
+                    <Button 
+                    className="mt-1 w-20 btn-custom" 
+                    type="button"
+                    onClick={handleDecremento}>
+                        -
+                    </Button>
+                    {numero}
+                    <Button 
+                    className="mt-1 w-20 btn-custom" 
+                    type="button"
+                    onClick={handleIncremento}>
+                        +
+                    </Button>
+                    </div>
+                </div>
+                <div>
+                    <label htmlFor="categoria">Categoria</label>
+                    <select
+                        id="categoria"
+                        className="form-select"
+                        {...register("categoria")}
+                    >
+                        <option value="Selecionar">Selecionar categoria</option>
+                        <option value="Alimentos">Alimentos</option>
+                        <option value="Higiene">Hortifruti</option>
+                        <option value="Bebidas">Bebidas</option>
+                        <option value="Higiene">Higiene</option>
+                        <option value="Limpeza">Limpeza</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="descricao">Descrição</label>
+                    <textarea
+                        id="descricao"
+                        className="form-control"
+
+                        {...register("descricao", { required: true, maxLength: 150 })}
+
+
+                    ></textarea>
+                    {errors.descricao && <small className="invalid">A descrição é inválida</small>}
+                </div>
+                <div className="mt-4">
+                    <Button className="mt-1 w-100 btn-custom" type="submit">
+                        Adicionar
+                    </Button>
+                </div>
+            </form>
+        </main>
+    );
 }
 
 export default AddItemComponent;

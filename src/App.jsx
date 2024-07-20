@@ -12,6 +12,7 @@ import { Toaster } from "react-hot-toast";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/config";
 import { UsuarioContext } from "./contexts/UsuarioContext";
+import AdicionarItem from "./pages/AdicionarItem";
 
 function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -43,6 +44,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/verify-email" element={<VerifyEmail />} />
+          <Route path="/adicionar-item" element={<AdicionarItem/>} />
           <Route element={<ProtectedRoute />}>
             <Route path="/lista-de-compras" element={<ListaCompra />} />
           </Route>
