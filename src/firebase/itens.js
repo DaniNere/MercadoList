@@ -7,9 +7,9 @@ import {
   getDocs,
   query,
   where,
-  updateDoc, // Adicione esta importação
+  updateDoc, 
 } from "firebase/firestore";
-import { db } from "./config"; // Certifique-se de que este arquivo exporta a instância do Firestore
+import { db } from "./config"; 
 
 const comprasCol = collection(db, "compras");
 
@@ -47,7 +47,7 @@ export async function getItem(id) {
 }
 
 export async function updateItem(id, data) {
-  const itemDoc = doc(db, "compras", id); // Use db para referenciar a coleção
+  const itemDoc = doc(db, "compras", id); 
   await updateDoc(itemDoc, data);
 }
 

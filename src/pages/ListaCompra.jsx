@@ -25,7 +25,7 @@ function ListaCompra() {
         .then((resultado) => {
           setCompras(resultado);
           setFilteredCompras(resultado);
-          calcularTotal(resultado); // Calcula o total de todos os itens inicialmente
+          calcularTotal(resultado); 
         })
         .catch((error) => {
           console.error("Erro ao carregar itens:", error);
@@ -49,11 +49,11 @@ function ListaCompra() {
     setSelectedCategory(category);
     if (category === '') {
       setFilteredCompras(compras);
-      calcularTotal(compras); // Calcula o total de todos os itens
+      calcularTotal(compras); 
     } else {
       const filtered = compras.filter(item => item.categoria === category);
       setFilteredCompras(filtered);
-      calcularTotal(filtered); // Calcula o total apenas dos itens filtrados
+      calcularTotal(filtered); 
     }
   }
 
