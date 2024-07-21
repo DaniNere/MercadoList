@@ -13,6 +13,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/config";
 import { UsuarioContext } from "./contexts/UsuarioContext";
 import AdicionarItem from "./pages/AdicionarItem";
+import AtualizarItem from "./pages/AtualizarItem";
 
 function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -44,9 +45,10 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/verify-email" element={<VerifyEmail />} />
-          <Route path="/adicionar-item" element={<AdicionarItem/>} />
+          <Route path="/itens/adicionar" element={<AdicionarItem />} />
+          <Route path="/itens/atualizar/:id" element={<AtualizarItem />} />
           <Route element={<ProtectedRoute />}>
-            <Route path="/lista-de-compras" element={<ListaCompra />} />
+            <Route path="/itens" element={<ListaCompra />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

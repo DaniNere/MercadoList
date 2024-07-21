@@ -28,7 +28,7 @@ function Navbar() {
           </Link>
         )}
         {!usuarioLogado && <Link to="/cadastro">Cadastro</Link>}
-        {usuarioLogado && <Link to="/lista-de-compras">Lista de Compras</Link>}
+        {usuarioLogado && <Link to="/itens">Lista de Compras</Link>}
         {usuarioLogado && (
           <span className="text-light nav-link mx-3">{usuarioLogado.displayName}</span>
         )}
