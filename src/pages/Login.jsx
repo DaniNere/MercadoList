@@ -22,7 +22,7 @@ function Login() {
     loginUsuario(data.email, data.senha)
       .then(() => {
         toast.success(`Bem-vindo(a)!`);
-        navigate("/lista-de-compras");
+        navigate("/itens");
       })
       .catch(() => {
         toast.error("Email e/ou senha incorreta!");
@@ -32,12 +32,12 @@ function Login() {
   function handleEntrarGoogle() {
     entrarGoogle().then(() => {
       toast.success("Bem vindo!");
-      navigate("/lista-de-compras");
+      navigate("/itens");
     });
   }
 
   if (usuarioLogado) {
-    return <Navigate to="/lista-de-compras" />;
+    return <Navigate to="/itens" />;
   }
 
   return (

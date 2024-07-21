@@ -1,22 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import "../styles/VerifyEmail.css";
 import { getAuth, sendEmailVerification } from "firebase/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
+import { UsuarioContext } from "../contexts/UsuarioContext";
 
 function VerifyEmail() {
   const auth = getAuth();
   const navigate = useNavigate();
+  const usuario = useContext(UsuarioContext);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isVerified, setIsVerified] = useState(false);
 
   useEffect(() => {
     const checkEmailVerification = async () => {
       const user = auth.currentUser;
       if (user) {
         await user.reload();
-        if (user.emailVerified) {
-          navigate("/lista-de-compras");
-        }
+        setIsVerified(user.emailVerified);
+        setIsLoading(false);
+      } else {
+        navigate("/");
       }
     };
+
+    checkEmailVerification();
 
     const intervalId = setInterval(checkEmailVerification, 5000);
 
@@ -36,6 +43,14 @@ function VerifyEmail() {
       }
     }
   };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!usuario || !auth.currentUser || isVerified) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <div className="container-reenviar-email">

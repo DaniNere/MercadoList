@@ -9,10 +9,11 @@ function Navbar() {
   const { usuarioLogado } = useContext(UsuarioContext);
   const navigate = useNavigate();
 
-  const handleLogout = async () => {
-    await logout();
-    navigate("/");
-  };
+  function handleLogout() {
+    logout().then(()=>{
+      navigate("/")
+    })
+  }
 
   return (
     <nav className="container-navbar">
@@ -30,7 +31,9 @@ function Navbar() {
         {!usuarioLogado && <Link to="/cadastro">Cadastro</Link>}
         {usuarioLogado && <Link to="/itens">Lista de Compras</Link>}
         {usuarioLogado && (
-          <span className="text-light nav-link mx-3">{usuarioLogado.displayName}</span>
+          <span className="text-light nav-link mx-3">
+            {usuarioLogado.displayName}
+          </span>
         )}
         {usuarioLogado && <Link onClick={handleLogout}>Logout</Link>}
       </ul>

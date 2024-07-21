@@ -1,11 +1,12 @@
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate, Navigate } from "react-router-dom";
+import { useState, useContext } from "react";
 import { NumericFormat } from "react-number-format";
 import { addCompra } from "../firebase/itens";
 import "../styles/AddItemComponent.css";
+import { UsuarioContext } from "../contexts/UsuarioContext";
 
 function AddItemComponent() {
   const {
@@ -16,12 +17,19 @@ function AddItemComponent() {
   } = useForm();
 
   const navigate = useNavigate();
-  const [numero, setNumero] = useState(1); 
+  const [numero, setNumero] = useState(1);
   const [preco, setPreco] = useState(0);
-  const [precoTotal, setPrecoTotal] = useState(preco); 
+  const [precoTotal, setPrecoTotal] = useState(preco);
+
+  const { usuarioLogado } = useContext(UsuarioContext);
+
+  if (usuarioLogado === null) {
+    return <Navigate to="/" />;
+  }
 
   async function salvarItem(data) {
     try {
+      data.idUsuario = usuarioLogado.uid;
       const dataComPrecoTotal = { ...data, precoTotal, quantidade: numero };
       await addCompra(dataComPrecoTotal);
       toast.success("Item adicionado com sucesso");
@@ -39,7 +47,7 @@ function AddItemComponent() {
   }
 
   function handleDecremento() {
-    if (numero > 1) { 
+    if (numero > 1) {
       const newNumero = numero - 1;
       setNumero(newNumero);
       setPrecoTotal(newNumero * preco);

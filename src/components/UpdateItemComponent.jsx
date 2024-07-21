@@ -1,11 +1,12 @@
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useNavigate, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useNavigate, useParams, Navigate } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 import { NumericFormat } from "react-number-format";
 import "../styles/AddItemComponent.css";
 import { getItem, updateItem } from "../firebase/itens";
+import { UsuarioContext } from "../contexts/UsuarioContext";
 
 function UpdateItemComponent() {
   const { id } = useParams();
@@ -21,6 +22,7 @@ function UpdateItemComponent() {
   const [numero, setNumero] = useState(1);
   const [preco, setPreco] = useState(0);
   const [precoTotal, setPrecoTotal] = useState(0);
+  const usuario = useContext(UsuarioContext);
 
   function carregarItem() {
     getItem(id).then((item) => {
@@ -67,6 +69,9 @@ function UpdateItemComponent() {
       setPrecoTotal(floatValue * numero);
       setValue("preco", floatValue);
     }
+  }
+  if (usuario === null) {
+    return <Navigate to="/" />;
   }
 
   return (

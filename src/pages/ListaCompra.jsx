@@ -1,18 +1,27 @@
 import { Badge, Button, Card, Container } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
-import { deleteItem, getItens } from "../firebase/itens";
-import { useEffect, useState } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { deleteItem, getItensUsuario } from "../firebase/itens";
+import { useContext, useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import toast from "react-hot-toast";
+import { UsuarioContext } from "../contexts/UsuarioContext";
 
 function ListaCompra() {
   const [compras, setCompras] = useState(null);
+  const usuario = useContext(UsuarioContext);
   const navigate = useNavigate();
 
   function carregarItens() {
-    getItens().then((resultados) => {
-      setCompras(resultados);
-    });
+    if (usuario?.usuarioLogado) { 
+      getItensUsuario(usuario.usuarioLogado.uid)
+        .then((resultado) => {
+          setCompras(resultado);
+        })
+        .catch((error) => {
+          console.error("Erro ao carregar itens:", error);
+          toast.error("Erro ao carregar itens");
+        });
+    }
   }
 
   function deletarItem(id) {
@@ -27,13 +36,17 @@ function ListaCompra() {
 
   useEffect(() => {
     carregarItens();
-  }, []);
+  }, [usuario]); 
 
   function formatarPreco(preco) {
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
       currency: "BRL",
     }).format(preco);
+  }
+
+  if (usuario === null) {
+    return <Navigate to="/" />;
   }
 
   return (
