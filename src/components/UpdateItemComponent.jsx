@@ -5,7 +5,7 @@ import { useNavigate, useParams, Navigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { NumericFormat } from "react-number-format";
 import "../styles/AddItemComponent.css";
-import { getItem, updateItem } from "../firebase/itens";
+import { getItem, updateItem } from "../firebase/itens"; // Verifique se a função updateItem está importada corretamente
 import { UsuarioContext } from "../contexts/UsuarioContext";
 
 function UpdateItemComponent() {

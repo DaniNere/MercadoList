@@ -7,9 +7,9 @@ import {
   getDocs,
   query,
   where,
+  updateDoc, // Adicione esta importação
 } from "firebase/firestore";
-import { db } from "./config";
-import { signOut } from "firebase/auth";
+import { db } from "./config"; // Certifique-se de que este arquivo exporta a instância do Firestore
 
 const comprasCol = collection(db, "compras");
 
@@ -30,7 +30,7 @@ export async function getItensUsuario(idUsuario) {
     return compras;
   } catch (error) {
     console.error("Erro ao obter itens do usuário:", error);
-    return []; // Retorna um array vazio em caso de erro
+    return []; 
   }
 }
 
@@ -47,8 +47,8 @@ export async function getItem(id) {
 }
 
 export async function updateItem(id, data) {
-  const ItemDoc = doc(comprasCol, id);
-  await updateDoc(ItemDoc, data);
+  const itemDoc = doc(db, "compras", id); // Use db para referenciar a coleção
+  await updateDoc(itemDoc, data);
 }
 
 export async function logout() {
