@@ -79,7 +79,8 @@ function CadastroComponent() {
             {errors.senha && <small className="registration-form__error-message">{errors.senha.message}</small>}
           </div>
           <div className="mt-4">
-            <Button className="registration-form__button registration-form__button--submit" type="submit">
+            <Button className="registration-form__button registration-form__button--submit btn-custom" 
+            type="submit">
               Cadastrar
             </Button>
             <Button
