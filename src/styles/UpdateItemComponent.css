@@ -1,6 +1,7 @@
 .form-section {
   width: 360px;
-
+  display: flex;
+  flex-direction: column;
   margin: 16px auto;
 }
 
@@ -18,19 +19,13 @@
   background-color: #f2f2f2;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-  margin-top: 2rem; 
-  margin-bottom: auto;
-  
+  margin-top: 3rem; 
+  color: #010337;
 }
 
-h1 {
+.h1-update-item {
   text-align: center;
-  color: #333;
-}
-
-.form-section {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 30px;
 }
 
 .form-section div {
@@ -74,7 +69,6 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-
   gap: 30px;
 }
 
@@ -102,6 +96,11 @@ button.variant-dark {
 
 button.variant-dark:hover {
   background-color: #010337; /* Remove o efeito de hover */
+}
+
+.botoes-update-item {
+  display: flex;
+  justify-content: space-around;
 }
 
 input[type="number"] {
