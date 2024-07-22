@@ -1,47 +1,72 @@
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
+import { useState, useContext } from "react";
+import { NumericFormat } from "react-number-format";
+import { addCompra } from "../firebase/itens";
 import "../styles/AddItemComponent.css";
-import { FaGoogle } from "react-icons/fa";
-import { useState } from "react";
+import { UsuarioContext } from "../contexts/UsuarioContext";
 
 function AddItemComponent() {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+  } = useForm();
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [numero, setNumero] = useState(1);
+  const [preco, setPreco] = useState(0);
+  const [precoTotal, setPrecoTotal] = useState(preco);
 
-    const [numero, setNumero] = useState(0);
+  const { usuarioLogado } = useContext(UsuarioContext);
 
-    function cadastrar(data) {
-        cadastrarUsuario(data.nome, data.preco, data.descricao)
-            .then(() => {
-                toast.success(`Bem vindo (a)! ${data.nome}`);
-                navigate("/tarefas");
-            })
-            .catch((error) => {
-                toast.error("Um erro aconteceu!" + error.code);
-            });
+  if (usuarioLogado === null) {
+    return <Navigate to="/" />;
+  }
+
+  async function salvarItem(data) {
+    try {
+      data.idUsuario = usuarioLogado.uid;
+      const dataComPrecoTotal = { ...data, precoTotal, quantidade: numero };
+      await addCompra(dataComPrecoTotal);
+      toast.success("Item adicionado com sucesso");
+      navigate("/itens");
+    } catch (error) {
+      console.error("Erro ao adicionar item:", error);
+      toast.error("Erro ao adicionar item");
     }
+  }
 
-    function handleIncremento() {
-        setNumero(numero + 1);
-    }
+  function handleIncremento() {
+    const newNumero = numero + 1;
+    setNumero(newNumero);
+    setPrecoTotal(newNumero * preco);
+  }
 
-    function handleDecremento() {
-        if (numero > 0) {
-            setNumero(numero - 1);
-        }
+  function handleDecremento() {
+    if (numero > 1) {
+      const newNumero = numero - 1;
+      setNumero(newNumero);
+      setPrecoTotal(newNumero * preco);
     }
+  }
+
+  function handlePrecoChange(values) {
+    const { floatValue } = values;
+    if (typeof floatValue === "number" && floatValue >= 0) {
+      setPreco(floatValue);
+      setPrecoTotal(floatValue * numero);
+      setValue("preco", floatValue);
+    }
+  }
 
     return (
         <main className="container">
             <form className="form-section" onSubmit={handleSubmit(cadastrar)}>
-                <h1>Adicionar Item</h1>
+                <h1>Adicionar item</h1>
                 <div>
                     <label htmlFor="nome">Nome</label>
                     <input

@@ -1,0 +1,11 @@
+.container-reenviar-email{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.retornar{
+  text-decoration: none;
+  color: black;
+}

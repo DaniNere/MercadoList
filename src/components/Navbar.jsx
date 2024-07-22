@@ -1,18 +1,18 @@
-import "../styles/Navbar.css";
-import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { logout } from "../firebase/auth";
-import { useContext } from "react";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { UsuarioContext } from "../contexts/UsuarioContext";
+import logo from "../assets/logo.png";
+import { logout } from "../firebase/auth";
+import "../styles/Navbar.css";
 
 function Navbar() {
-  const usuario = useContext(UsuarioContext);
+  const { usuarioLogado } = useContext(UsuarioContext);
   const navigate = useNavigate();
+
   function handleLogout() {
-    logout().then(() => {
-      navigate("/");
-    });
+    logout().then(()=>{
+      navigate("/")
+    })
   }
 
   return (
@@ -23,17 +23,19 @@ function Navbar() {
         alt="Logo de um carrinho de compras com um celular dentro e escrita MercadoList"
       />
       <ul>
-        {!usuario && (
+        {!usuarioLogado && (
           <Link className="link-login" to="/">
             Login
           </Link>
         )}
-        {!usuario && <Link to="/cadastro">Cadastro</Link>}
-        {usuario && <Link to="/lista-de-compras">Lista de Compras</Link>}
-        {usuario && (
-          <span className="text-light nav-link mx-3">{usuario.displayName}</span>
+        {!usuarioLogado && <Link to="/cadastro">Cadastro</Link>}
+        {usuarioLogado && <Link to="/itens">Lista de Compras</Link>}
+        {usuarioLogado && (
+          <span className="text-light nav-link mx-3">
+            {usuarioLogado.displayName}
+          </span>
         )}
-        {usuario && <Link onClick={handleLogout}>Logout</Link>}
+        {usuarioLogado && <Link onClick={handleLogout}>Logout</Link>}
       </ul>
     </nav>
   );

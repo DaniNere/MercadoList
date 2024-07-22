@@ -1,3 +1,14 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  padding-bottom: 100px; /* Aumente o valor conforme necessário */
+}
+
+
 .container-footer {
   width: 100%;
   background-color: #11afd1;
@@ -8,13 +19,14 @@
   justify-content: center;
   align-items: center;
   gap: 300px;
-  position: relative;
+  position: fixed;
   bottom: 0;
+  margin-top: auto;
+ 
 }
 .container-footer p {
   margin: 0;
   font-size: 14px;
-
 }
 
 .footer-links {
@@ -30,4 +42,41 @@
   margin: 0 15px;
   font-size: 14px;
   cursor: pointer;
+}
+/* Configurações de Responsividade */
+@media (max-width: 768px) {
+  .container-footer {
+    flex-direction: column;
+    padding: 10px 0;
+    gap: 20px;
+    position: static; /* Muda para posição estática em telas menores */
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links li {
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-footer {
+    padding: 5px 0;
+    gap: 10px;
+  }
+
+  .footer-links {
+    gap: 5px;
+  }
+
+  .footer-links li {
+    font-size: 12px;
+  }
+
+  .container-footer p {
+    font-size: 12px;
+  }
 }
