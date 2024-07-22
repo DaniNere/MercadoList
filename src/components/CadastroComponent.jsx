@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";

@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Ocupa a altura total da viewport */
+  height: 100vh; 
 }
 /* Container principal do formulário de login */
 .login-container {

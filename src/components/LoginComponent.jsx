@@ -84,7 +84,7 @@ function LoginComponent() {
               type="button"
             >
               <FaGoogle className="login-form__google-icon" />
-              <span className="login-form__google-text">Entrar com o Google</span>
+              <span className="login-form__google-text ">Entrar com o Google</span>
             </Button>
           </form>
         </div>
