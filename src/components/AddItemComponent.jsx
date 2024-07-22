@@ -63,107 +63,87 @@ function AddItemComponent() {
     }
   }
 
-  return (
-    <main className="container">
-      <form className="form-section" onSubmit={handleSubmit(salvarItem)}>
-        <h1>Adicionar Item</h1>
-        <div>
-          <label htmlFor="nome">Nome</label>
-          <input
-            type="text"
-            id="nome"
-            className="form-control"
-            placeholder="Digite o nome do item"
-            {...register("nome", { required: true, maxLength: 100 })}
-          />
-          {errors.nome && <small className="invalid">O nome é inválido!</small>}
-        </div>
-        <div>
-          <label htmlFor="preco">Preço</label>
-          <NumericFormat
-            id="preco"
-            className="form-control"
-            placeholder="Digite o preço"
-            thousandSeparator=""
-            decimalSeparator=","
-            allowNegative={false}
-            onValueChange={handlePrecoChange}
-            value={preco}
-            {...register("preco", {
-              required: "O preço é obrigatório",
-              validate: (value) =>
-                (value !== "" && !isNaN(value)) || "O preço é inválido",
-            })}
-          />
-          {errors.preco && (
-            <small className="invalid">{errors.preco.message}</small>
-          )}
-        </div>
-        <div>
-          <label htmlFor="quantidade">Quantidade</label>
-          <div className="quantidade">
-            <Button
-              className="mt-1 w-20 btn-custom"
-              type="button"
-              onClick={handleDecremento}
-            >
-              -
-            </Button>
-            {numero}
-            <Button
-              className="mt-1 w-20 btn-custom"
-              type="button"
-              onClick={handleIncremento}
-            >
-              +
-            </Button>
-          </div>
-        </div>
-        <div>
-          <label htmlFor="precoTotal">Preço Total</label>
-          <input
-            type="text"
-            id="precoTotal"
-            className="form-control"
-            value={`R$ ${precoTotal.toFixed(2)}`}
-            readOnly
-          />
-        </div>
-        <div>
-          <label htmlFor="categoria">Categoria</label>
-          <select
-            id="categoria"
-            className="form-select"
-            {...register("categoria")}
-          >
-            <option value="">Selecionar categoria</option>
-            <option value="Alimentos">Alimentos</option>
-            <option value="Hortifruti">Hortifruti</option>
-            <option value="Bebidas">Bebidas</option>
-            <option value="Higiene">Higiene</option>
-            <option value="Limpeza">Limpeza</option>
-            <option value="Outros">Outros</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="descricao">Descrição</label>
-          <textarea
-            id="descricao"
-            className="form-control"
-            {...register("descricao", { maxLength: 150 })}
-          ></textarea>
-          {errors.descricao && (
-            <small className="invalid">A descrição é inválida</small>
-          )}
-        </div>
-        <div className="mt-4">
-          <Button className="mt-1 w-100 btn-custom" type="submit">
-            Adicionar
-          </Button>
-        </div>
-      </form>
-    </main>
-  );
+    return (
+        <main className="container">
+            <form className="form-section" onSubmit={handleSubmit(cadastrar)}>
+                <h1>Adicionar item</h1>
+                <div>
+                    <label htmlFor="nome">Nome</label>
+                    <input
+                        type="text"
+                        id="nome"
+                        className="form-control"
+                        placeholder="Digite o seu item"
+                        {...register("nome", { required: true, maxLength: 100 })}
+                    />
+                    {errors.nome && (
+                        <small className="invalid">O nome é inválido!</small>
+                    )}
+                </div>
+                <div>
+                    <label htmlFor="preco">Preço</label>
+                    <input
+                        type="number"
+                        id="preco"
+                        className="form-control"
+                        placeholder="Digite o preço"
+                        {...register("preco", { required: true })}
+                    />
+                    {errors.preco && (
+                        <small className="invalid">O preço é inválido!</small>
+                    )}
+                </div>
+                <div>
+                    <label htmlFor="quantidade">Quantidade</label>
+                    <div  className="quantidade">
+                    <Button 
+                    className="mt-1 w-20 btn-custom" 
+                    type="button"
+                    onClick={handleDecremento}>
+                        -
+                    </Button>
+                    {numero}
+                    <Button 
+                    className="mt-1 w-20 btn-custom" 
+                    type="button"
+                    onClick={handleIncremento}>
+                        +
+                    </Button>
+                    </div>
+                </div>
+                <div>
+                    <label htmlFor="categoria">Categoria</label>
+                    <select
+                        id="categoria"
+                        className="form-select"
+                        {...register("categoria")}
+                    >
+                        <option value="Selecionar">Selecionar categoria</option>
+                        <option value="Alimentos">Alimentos</option>
+                        <option value="Higiene">Hortifruti</option>
+                        <option value="Bebidas">Bebidas</option>
+                        <option value="Higiene">Higiene</option>
+                        <option value="Limpeza">Limpeza</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="descricao">Descrição</label>
+                    <textarea
+                        id="descricao"
+                        className="form-control"
+                        {...register("descricao", { required: true })}
+                    ></textarea>
+                    {errors.descricao && <small className="invalid">A descrição é inválida</small>}
+                </div>
+                <div className="mt-4">
+                    <Button className="mt-1 w-100 btn-custom" type="submit">
+                        Adicionar
+                    </Button>
+                </div>
+            </form>
+        </main>
+    );
 }
 
 export default AddItemComponent;

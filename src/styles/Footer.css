@@ -21,6 +21,7 @@ main {
   gap: 300px;
   position: fixed;
   bottom: 0;
+  margin-top: auto;
  
 }
 .container-footer p {
@@ -41,4 +42,41 @@ main {
   margin: 0 15px;
   font-size: 14px;
   cursor: pointer;
+}
+/* Configurações de Responsividade */
+@media (max-width: 768px) {
+  .container-footer {
+    flex-direction: column;
+    padding: 10px 0;
+    gap: 20px;
+    position: static; /* Muda para posição estática em telas menores */
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links li {
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-footer {
+    padding: 5px 0;
+    gap: 10px;
+  }
+
+  .footer-links {
+    gap: 5px;
+  }
+
+  .footer-links li {
+    font-size: 12px;
+  }
+
+  .container-footer p {
+    font-size: 12px;
+  }
 }
