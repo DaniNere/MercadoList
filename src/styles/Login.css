@@ -70,6 +70,7 @@
 .login-form__button--submit {
   background-color: #11afd1;
   color: #fff;
+  margin-bottom: 10px;
 }
 
 .login-form__button--submit:hover {
