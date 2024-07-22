@@ -11,6 +11,7 @@ function ListaCompra() {
   const [filteredCompras, setFilteredCompras] = useState([]);
   const [precoTotal, setPrecoTotal] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   const usuario = useContext(UsuarioContext);
   const navigate = useNavigate();
 
@@ -20,12 +21,12 @@ function ListaCompra() {
   }
 
   function carregarItens() {
-    if (usuario?.usuarioLogado) { 
+    if (usuario?.usuarioLogado) {
       getItensUsuario(usuario.usuarioLogado.uid)
         .then((resultado) => {
           setCompras(resultado);
           setFilteredCompras(resultado);
-          calcularTotal(resultado); 
+          calcularTotal(resultado);
         })
         .catch((error) => {
           console.error("Erro ao carregar itens:", error);
@@ -47,22 +48,38 @@ function ListaCompra() {
   function handleCategoryChange(event) {
     const category = event.target.value;
     setSelectedCategory(category);
-    if (category === '') {
-      setFilteredCompras(compras);
-      calcularTotal(compras); 
-    } else {
-      const filtered = compras.filter(item => item.categoria === category);
-      setFilteredCompras(filtered);
-      calcularTotal(filtered); 
+    filterItems(searchTerm, category);
+  }
+
+  function handleSearchChange(event) {
+    const term = event.target.value.toLowerCase();
+    setSearchTerm(term);
+    filterItems(term, selectedCategory);
+  }
+
+  function filterItems(term, category) {
+    let filtered = compras;
+
+    if (category) {
+      filtered = filtered.filter(item => item.categoria === category);
     }
+
+    if (term) {
+      filtered = filtered.filter(item =>
+        item.nome.toLowerCase().includes(term)
+      );
+    }
+
+    setFilteredCompras(filtered);
+    calcularTotal(filtered);
   }
 
   useEffect(() => {
     carregarItens();
-  }, [usuario]); 
+  }, [usuario]);
 
   useEffect(() => {
-    handleCategoryChange({ target: { value: selectedCategory } });
+    filterItems(searchTerm, selectedCategory);
   }, [compras]);
 
   function formatarPreco(preco) {
@@ -89,10 +106,17 @@ function ListaCompra() {
             <h4>Total de Compras: {formatarPreco(precoTotal)}</h4>
           </div>
           <div className="mt-3">
+            <Form.Control
+              type="text"
+              placeholder="Pesquisar itens"
+              value={searchTerm}
+              onChange={handleSearchChange}
+            />
             <Form.Select
               aria-label="Filtrar por categoria"
               value={selectedCategory}
               onChange={handleCategoryChange}
+              className="mt-3"
             >
               <option value="">Todos</option>
               <option value="Alimentos">Alimentos</option>
@@ -136,7 +160,7 @@ function ListaCompra() {
               ))}
             </section>
           ) : (
-            <p className="mt-3">Nenhum item encontrado para a categoria selecionada.</p>
+            <p className="mt-3">Nenhum item encontrado para a categoria ou pesquisa selecionada.</p>
           )}
         </div>
       </Container>

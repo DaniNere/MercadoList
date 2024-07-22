@@ -38,7 +38,6 @@ function UpdateItemComponent() {
   }
 
   function atualizarItem(data) {
-    // Adiciona os valores de quantidade e preço total ao objeto de dados
     data.quantidade = numero;
     data.precoTotal = precoTotal;
     
