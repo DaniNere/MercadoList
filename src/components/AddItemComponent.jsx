@@ -64,89 +64,6 @@ function AddItemComponent() {
     }
   }
 
-<<<<<<< Updated upstream
-    return (
-        <main className="container">
-            <form className="form-section" onSubmit={handleSubmit(cadastrar)}>
-                <h1>Adicionar item</h1>
-                <div>
-                    <label htmlFor="nome">Nome</label>
-                    <input
-                        type="text"
-                        id="nome"
-                        className="form-control"
-                        placeholder="Digite o seu item"
-                        {...register("nome", { required: true, maxLength: 100 })}
-                    />
-                    {errors.nome && (
-                        <small className="invalid">O nome é inválido!</small>
-                    )}
-                </div>
-                <div>
-                    <label htmlFor="preco">Preço</label>
-                    <input
-                        type="number"
-                        id="preco"
-                        className="form-control"
-                        placeholder="Digite o preço"
-                        {...register("preco", { required: true })}
-                    />
-                    {errors.preco && (
-                        <small className="invalid">O preço é inválido!</small>
-                    )}
-                </div>
-                <div>
-                    <label htmlFor="quantidade">Quantidade</label>
-                    <div  className="quantidade">
-                    <Button 
-                    className="mt-1 w-20 btn-custom" 
-                    type="button"
-                    onClick={handleDecremento}>
-                        -
-                    </Button>
-                    {numero}
-                    <Button 
-                    className="mt-1 w-20 btn-custom" 
-                    type="button"
-                    onClick={handleIncremento}>
-                        +
-                    </Button>
-                    </div>
-                </div>
-                <div>
-                    <label htmlFor="categoria">Categoria</label>
-                    <select
-                        id="categoria"
-                        className="form-select"
-                        {...register("categoria")}
-                    >
-                        <option value="Selecionar">Selecionar categoria</option>
-                        <option value="Alimentos">Alimentos</option>
-                        <option value="Higiene">Hortifruti</option>
-                        <option value="Bebidas">Bebidas</option>
-                        <option value="Higiene">Higiene</option>
-                        <option value="Limpeza">Limpeza</option>
-                        <option value="Outros">Outros</option>
-                    </select>
-                </div>
-                <div>
-                    <label htmlFor="descricao">Descrição</label>
-                    <textarea
-                        id="descricao"
-                        className="form-control"
-                        {...register("descricao", { required: true })}
-                    ></textarea>
-                    {errors.descricao && <small className="invalid">A descrição é inválida</small>}
-                </div>
-                <div className="mt-4">
-                    <Button className="mt-1 w-100 btn-custom" type="submit">
-                        Adicionar
-                    </Button>
-                </div>
-            </form>
-        </main>
-    );
-=======
   return (
     <main className="container add-item-container">
       <form className="form-section" onSubmit={handleSubmit(salvarItem)}>
@@ -243,18 +160,17 @@ function AddItemComponent() {
         </div>
         <div className="botoes-add-item mt-4">
           <Link to="/">
-            <Button className="cancelar mt-1 me-1 w-40" variant="danger" type="button">
+            <Button className="cancelar mt-1 w-40" variant="danger" type="button">
               Cancelar
             </Button>   
           </Link>     
-          <Button className="mt-1 w-40 ms-1 btn-custom" type="submit">
+          <Button className="mt-1 w-40 btn-custom" type="submit">
             Adicionar
           </Button> 
         </div>
       </form>
     </main>
   );
->>>>>>> Stashed changes
 }
 
 export default AddItemComponent;
