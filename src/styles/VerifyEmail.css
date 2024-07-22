@@ -2,10 +2,32 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
   text-align: center;
+  margin-top: 80px;
+  gap: 10px;
 }
 
 .retornar{
   text-decoration: none;
-  color: black;
+  color: #11AFD1;
+  margin-right: 5px;
+  font-weight: 600;
+}
+
+.email-icon {
+  color: #11AFD1;
+  font-size: 80px;
+}
+
+.reenviar-email {
+  background-color: #11AFD1;
+  color: white;
+  border-radius: 8px;
+  margin-right: 20px;
+  padding: 10px 20px;
+}
+
+.seta-icon {
+  color: #11AFD1;
 }
