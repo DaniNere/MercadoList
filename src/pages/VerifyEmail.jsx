@@ -5,7 +5,7 @@ import { Link, useNavigate, Navigate } from "react-router-dom";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import { MdMarkEmailUnread } from "react-icons/md";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { logout } from "../firebase/auth"; // Certifique-se de ajustar o caminho conforme necessário
+import { logout } from "../firebase/auth"; 
 
 function VerifyEmail() {
   const auth = getAuth();

@@ -135,46 +135,45 @@ function ListaCompra() {
             </Container>
             <div className="items-container mt-2">
                 {filteredCompras.length > 0 ? (
-                    <section>
-                        {filteredCompras.map((item) => (
-                            <Card key={item.id} className="item-card">
-                                <Card.Body className="bloco-container">
-                                    <Card.Title>{item.nome}
-                                        <div className="text-container">
-                                            <Card.Text>Preço: {formatarPreco(item.preco)}</Card.Text>
-                                            <Card.Text>
-                                                Preço Total: {formatarPreco(item.precoTotal)}
-                                            </Card.Text>
-                                            <Card.Text>{item.descricao}</Card.Text>
-                                            <Card.Text>Quantidade: {item.quantidade}</Card.Text>
-                                        </div>
-
-                                    </Card.Title>
-                                    <div className="badge-container mb-2">
-                                        <Badge>{item.categoria}</Badge>
-                                    </div>
-
-                                    <div className="button-container">
-                                        <Button
-                                            className="edit-button"
-                                            onClick={() => {
-                                                navigate(`/itens/atualizar/${item.id}`);
-                                            }}
-                                        >
-                                            Editar
-                                        </Button>
-                                        <Button
-                                            className="delete-button"
-                                            variant="danger"
-                                            onClick={() => deletarItem(item.id)}
-                                        >
-                                            Excluir
-                                        </Button>
-                                    </div>
-                                </Card.Body>
-                            </Card>
-                        ))}
-                    </section>
+               <section>
+               {filteredCompras.map((item) => (
+                 <Card key={item.id} className="item-card">
+                   <Card.Body className="bloco-container">
+                     <div className="title-container">
+                       <Card.Title>{item.nome}</Card.Title>
+                       <Badge className="categoria-badge">{item.categoria}</Badge>
+                       <Card.Text className="descricao-text">{item.descricao}</Card.Text>
+                     </div>
+                     <div className="price-container">
+                       <Card.Text>Preço: {formatarPreco(item.preco)}</Card.Text>
+                       <Card.Text>Preço Total: {formatarPreco(item.precoTotal)}</Card.Text>
+                       <Card.Text>Quantidade: {item.quantidade}</Card.Text>
+                       <div className="button-container">
+                         <Button
+                           className="edit-button"
+                           onClick={() => {
+                             navigate(`/itens/atualizar/${item.id}`);
+                           }}
+                         >
+                           Editar
+                         </Button>
+                         <Button
+                           className="delete-button"
+                           variant="danger"
+                           onClick={() => deletarItem(item.id)}
+                         >
+                           Excluir
+                         </Button>
+                       </div>
+                     </div>
+                   </Card.Body>
+                 </Card>
+               ))}
+             </section>
+             
+              
+               
+               
                 ) : (
                     <p className="mt-3">Nenhum item encontrado para a categoria ou pesquisa selecionada.</p>
                 )}

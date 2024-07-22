@@ -1,101 +1,123 @@
 .filters-container {
-    display: flex;  
-    align-items: center;
-    gap: 20px; 
-    flex: 1;
-  }
-  
-  .filter-container {
-    flex: 1;
-    max-width: 150px;    
-  }
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+}
 
-  .pesquisar-container{
-    flex: 1;
-    max-width: 200px;
-           
-  }
-  .card-title {
-    display: flex; 
-    width: 400px; 
-    gap: 50px;
-  }
-  
-  .items-container {
-    padding: 20px;
-    background-color: #F2F2F2;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }  
-  .bloco-container{
-    justify-content: space-between;
-    gap: 80px;
+.filter-container {
+  flex: 1;
+  max-width: 150px;
+}
 
-  }
-  
-  .btn-custom {
-    padding: 10px 20px;
-    background-color: #11AFD1;
-    color: #F2F2F2;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  
-  .btn-custom:hover {
-    background-color: #11AFD1;
-    color: #fff;
-  }
-  
- 
-  .item-card {
-    margin-bottom: 20px;
-    border: 1px solid #F2F2F2;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    justify-content: flex-end;    
-  }
-  
-  .item-card .edit-button,
-  .item-card .delete-button {
-    margin-right: 10px;
-  }
-  
-  .item-card .delete-button {
-    background-color: #dc3545;
-    border-color: #dc3545;
-  }
-  
-  .item-card .delete-button:hover {
-    background-color: #c82333;
-    border-color: #bd2130;
-  }
+.pesquisar-container {
+  flex: 1;
+  max-width: 200px;
+}
+
+.card-title {
+  display: flex;
+  width: 400px;
+  gap: 50px;
+}
+
+.items-container {
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bloco-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+}
+
+.price-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.btn-custom {
+  padding: 10px 20px;
+  background-color: #11afd1;
+  color: #f2f2f2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-custom:hover {
+  background-color: #11afd1;
+  color: #fff;
+}
+
+.item-card {
+  margin-bottom: 20px;
+  border: 1px solid #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.item-card .edit-button,
+.item-card .delete-button {
+  margin-right: 10px;
+}
+
+.item-card .delete-button {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.item-card .delete-button:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
 
 .button-container {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-  }
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
 
 .text-container {
   display: flex;
   flex-direction: column;
   justify-content: end;
-  align-items: flex-end; 
+  align-items: flex-end;
   gap: 2px;
   margin-bottom: 2px;
-  max-width:70%;
+  max-width: 70%;
 }
 
 .text-container .card-text {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
+
 .badge-container {
-    display: inline-block; 
-    max-width: 100px; 
-    padding: 4px 8px; 
+  display: inline-block;
+  max-width: 100px;
+  padding: 4px 8px;
+}
+
+.categoria-badge {
+  margin-top: 8px;
+}
+
+.descricao-text {
+  margin-top: 8px;
+  width: 300px;
 }
