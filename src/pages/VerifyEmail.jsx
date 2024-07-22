@@ -5,6 +5,7 @@ import { Link, useNavigate, Navigate } from "react-router-dom";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import { MdMarkEmailUnread } from "react-icons/md";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { logout } from "../firebase/auth"; // Certifique-se de ajustar o caminho conforme necessário
 
 function VerifyEmail() {
   const auth = getAuth();
@@ -46,6 +47,12 @@ function VerifyEmail() {
     }
   };
 
+  const handleLogout = () => {
+    logout().then(() => {
+      navigate("/");
+    });
+  };
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -63,9 +70,9 @@ function VerifyEmail() {
         <button className="reenviar-email" onClick={resendVerificationEmail}>
           Reenviar E-mail
         </button>
-        <Link className="retornar" to="/">
+        <button className="retornar" onClick={handleLogout}>
           Retornar para o Login
-        </Link>
+        </button>
         <FaArrowRightLong className="seta-icon"/>
       </div>
     </div>
