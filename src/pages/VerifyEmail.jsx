@@ -3,6 +3,8 @@ import "../styles/VerifyEmail.css";
 import { getAuth, sendEmailVerification } from "firebase/auth";
 import { Link, useNavigate, Navigate } from "react-router-dom";
 import { UsuarioContext } from "../contexts/UsuarioContext";
+import { MdMarkEmailUnread } from "react-icons/md";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 function VerifyEmail() {
   const auth = getAuth();
@@ -54,6 +56,7 @@ function VerifyEmail() {
 
   return (
     <div className="container-reenviar-email">
+      <MdMarkEmailUnread className="email-icon"/>
       <h1>Verifique seu E-mail</h1>
       <p>Por favor, verifique seu e-mail para confirmar sua conta.</p>
       <div>
@@ -63,6 +66,7 @@ function VerifyEmail() {
         <Link className="retornar" to="/">
           Retornar para o Login
         </Link>
+        <FaArrowRightLong className="seta-icon"/>
       </div>
     </div>
   );
