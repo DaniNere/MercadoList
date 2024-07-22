@@ -6,6 +6,8 @@ import Loader from "../components/Loader";
 import toast from "react-hot-toast";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import "../styles/ListaCompras.css";
+import { FiTrash2 } from "react-icons/fi";
+import { FiEdit } from "react-icons/fi";
 
 function ListaCompra() {
   const [compras, setCompras] = useState([]);
@@ -162,14 +164,14 @@ function ListaCompra() {
                           navigate(`/itens/atualizar/${item.id}`);
                         }}
                       >
-                        Editar
+                        <FiEdit />
                       </Button>
                       <Button
                         className="delete-button"
                         variant="danger"
                         onClick={() => deletarItem(item.id)}
                       >
-                        Excluir
+                        <FiTrash2 />
                       </Button>
                     </div>
                   </div>
