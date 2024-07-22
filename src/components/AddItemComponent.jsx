@@ -41,7 +41,7 @@ function AddItemComponent() {
     return (
         <main className="container">
             <form className="form-section" onSubmit={handleSubmit(cadastrar)}>
-                <h1>Adicionar item</h1>
+                <h1>Adicionar Item</h1>
                 <div>
                     <label htmlFor="nome">Nome</label>
                     <input
