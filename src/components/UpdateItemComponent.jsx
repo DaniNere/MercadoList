@@ -4,9 +4,10 @@ import toast from "react-hot-toast";
 import { useNavigate, useParams, Navigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { NumericFormat } from "react-number-format";
-import "../styles/AddItemComponent.css";
+import "../styles/UpdateItemComponent.css";
 import { getItem, updateItem } from "../firebase/itens";
 import { UsuarioContext } from "../contexts/UsuarioContext";
+import { Link } from "react-router-dom";
 
 function UpdateItemComponent() {
   const { id } = useParams();
@@ -90,7 +91,7 @@ function UpdateItemComponent() {
   return (
     <main className="container">
       <form className="form-section" onSubmit={handleSubmit(atualizarItem)}>
-        <h1>Atualizar Item</h1>
+        <h1 className="h1-update-item">Atualizar Item</h1>
         <div>
           <label htmlFor="nome">Nome</label>
           <input
@@ -125,7 +126,7 @@ function UpdateItemComponent() {
         </div>
         <div>
           <label htmlFor="quantidade">Quantidade</label>
-          <div className="quantidade">
+          <section className="quantidade">
             <Button
               className="mt-1 w-20 btn-custom"
               type="button"
@@ -141,7 +142,7 @@ function UpdateItemComponent() {
             >
               +
             </Button>
-          </div>
+          </section>
         </div>
         <div>
           <label htmlFor="precoTotal">Preço Total</label>
@@ -180,10 +181,15 @@ function UpdateItemComponent() {
             <small className="invalid">A descrição é inválida</small>
           )}
         </div>
-        <div className="mt-4">
-          <Button className="mt-1 w-100 btn-custom" type="submit">
+        <div className="botoes-update-item mt-4">
+          <Button className="mt-1 w-40 btn-custom" type="submit">
             Atualizar
           </Button>
+          <Link to="/">
+            <Button className="cancelar mt-1 w-40" variant="danger" type="button">
+              Cancelar
+            </Button>   
+          </Link>
         </div>
       </form>
     </main>

@@ -158,15 +158,15 @@ function AddItemComponent() {
             <small className="invalid">A descrição é inválida</small>
           )}
         </div>
-        <div className="botoes-add-item mt-4">
+        <div className="botoes-add-item mt-4">  
+          <Button className="mt-1 w-40 btn-custom" type="submit">
+              Adicionar
+          </Button> 
           <Link to="/">
             <Button className="cancelar mt-1 w-40" variant="danger" type="button">
               Cancelar
             </Button>   
-          </Link>     
-          <Button className="mt-1 w-40 btn-custom" type="submit">
-            Adicionar
-          </Button> 
+          </Link>
         </div>
       </form>
     </main>
