@@ -9,17 +9,28 @@ import {
   where,
   updateDoc, 
 } from "firebase/firestore";
-import { db } from "./config"; 
+import { db, auth } from "./config"; 
 
 const comprasCol = collection(db, "compras");
 
 export async function addCompra(data) {
-  await addDoc(comprasCol, data);
+  const user = auth.currentUser;
+  if (!user) throw new Error("Usuário não autenticado");
+
+  const compraData = {
+    ...data,
+    idUsuario: user.uid,
+  };
+
+  await addDoc(comprasCol, compraData);
 }
 
-export async function getItensUsuario(idUsuario) {
+export async function getItensUsuario() {
+  const user = auth.currentUser;
+  if (!user) throw new Error("Usuário não autenticado");
+
   try {
-    const filtro = query(comprasCol, where("idUsuario", "==", idUsuario));
+    const filtro = query(comprasCol, where("idUsuario", "==", user.uid));
     const snapshot = await getDocs(filtro);
     const compras = [];
 
@@ -35,22 +46,43 @@ export async function getItensUsuario(idUsuario) {
 }
 
 export async function deleteItem(id) {
-  const itemDoc = doc(comprasCol, id);
-  await deleteDoc(itemDoc);
-}
+  const user = auth.currentUser;
+  if (!user) throw new Error("Usuário não autenticado");
 
-export async function getItem(id) {
   const itemDoc = doc(comprasCol, id);
   const item = await getDoc(itemDoc);
 
-  return item.data();
+  if (item.exists() && item.data().idUsuario === user.uid) {
+    await deleteDoc(itemDoc);
+  } else {
+    throw new Error("Permissão negada para excluir este item");
+  }
+}
+
+export async function getItem(id) {
+  const user = auth.currentUser;
+  if (!user) throw new Error("Usuário não autenticado");
+
+  const itemDoc = doc(comprasCol, id);
+  const item = await getDoc(itemDoc);
+
+  if (item.exists() && item.data().idUsuario === user.uid) {
+    return item.data();
+  } else {
+    throw new Error("Permissão negada para acessar este item");
+  }
 }
 
 export async function updateItem(id, data) {
-  const itemDoc = doc(db, "compras", id); 
-  await updateDoc(itemDoc, data);
-}
+  const user = auth.currentUser;
+  if (!user) throw new Error("Usuário não autenticado");
 
-export async function logout() {
-  await signOut(auth);
+  const itemDoc = doc(comprasCol, id);
+  const item = await getDoc(itemDoc);
+
+  if (item.exists() && item.data().idUsuario === user.uid) {
+    await updateDoc(itemDoc, data);
+  } else {
+    throw new Error("Permissão negada para atualizar este item");
+  }
 }
