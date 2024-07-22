@@ -17,9 +17,9 @@ function Cadastro() {
   async function cadastrar(data) {
     try {
       const user = await cadastrarUsuario(data.nome, data.email, data.senha);
-      await sendEmailVerification(user); // Envia e-mail de verificação
+      await sendEmailVerification(user); 
       toast.success(`Bem-vindo(a)! ${data.nome}. Verifique seu e-mail.`);
-      navigate("/");
+      navigate("/itens");
     } catch (error) {
       toast.error("Um erro aconteceu! " + error.message);
     }
@@ -29,7 +29,7 @@ function Cadastro() {
     try {
       await entrarGoogle();
       toast.success("Bem-vindo(a)!");
-      navigate("/");
+      navigate("/itens");
     } catch (error) {
       toast.error("Um erro aconteceu! " + error.message);
     }

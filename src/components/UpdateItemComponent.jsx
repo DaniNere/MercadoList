@@ -1,44 +1,52 @@
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useNavigate, Navigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useNavigate, useParams, Navigate } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 import { NumericFormat } from "react-number-format";
-import { addCompra } from "../firebase/itens";
 import "../styles/AddItemComponent.css";
+import { getItem, updateItem } from "../firebase/itens"; 
 import { UsuarioContext } from "../contexts/UsuarioContext";
 
-function AddItemComponent() {
+function UpdateItemComponent() {
+  const { id } = useParams();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
     setValue,
   } = useForm();
 
   const navigate = useNavigate();
   const [numero, setNumero] = useState(1);
   const [preco, setPreco] = useState(0);
-  const [precoTotal, setPrecoTotal] = useState(preco);
+  const [precoTotal, setPrecoTotal] = useState(0);
+  const usuario = useContext(UsuarioContext);
 
-  const { usuarioLogado } = useContext(UsuarioContext);
-
-  if (usuarioLogado === null) {
-    return <Navigate to="/" />;
+  function carregarItem() {
+    getItem(id).then((item) => {
+      if (item) {
+        reset(item);
+        setNumero(item.quantidade || 1);
+        setPreco(item.preco || 0);
+        setPrecoTotal((item.preco || 0) * (item.quantidade || 1));
+      } else {
+        navigate("/itens");
+      }
+    });
   }
 
-  async function salvarItem(data) {
-    try {
-      data.idUsuario = usuarioLogado.uid;
-      const dataComPrecoTotal = { ...data, precoTotal, quantidade: numero };
-      await addCompra(dataComPrecoTotal);
-      toast.success("Item adicionado com sucesso");
+  function atualizarItem(data) {
+    updateItem(id, data).then(() => {
+      toast.success("Item atualizado com sucesso!");
       navigate("/itens");
-    } catch (error) {
-      console.error("Erro ao adicionar item:", error);
-      toast.error("Erro ao adicionar item");
-    }
+    });
   }
+
+  useEffect(() => {
+    carregarItem();
+  }, []);
 
   function handleIncremento() {
     const newNumero = numero + 1;
@@ -62,11 +70,14 @@ function AddItemComponent() {
       setValue("preco", floatValue);
     }
   }
+  if (usuario === null) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <main className="container">
-      <form className="form-section" onSubmit={handleSubmit(salvarItem)}>
-        <h1>Adicionar Item</h1>
+      <form className="form-section" onSubmit={handleSubmit(atualizarItem)}>
+        <h1>Atualizar Item</h1>
         <div>
           <label htmlFor="nome">Nome</label>
           <input
@@ -158,7 +169,7 @@ function AddItemComponent() {
         </div>
         <div className="mt-4">
           <Button className="mt-1 w-100 btn-custom" type="submit">
-            Adicionar
+            Atualizar
           </Button>
         </div>
       </form>
@@ -166,4 +177,4 @@ function AddItemComponent() {
   );
 }
 
-export default AddItemComponent;
+export default UpdateItemComponent;
