@@ -38,6 +38,10 @@ function UpdateItemComponent() {
   }
 
   function atualizarItem(data) {
+    // Adiciona os valores de quantidade e preço total ao objeto de dados
+    data.quantidade = numero;
+    data.precoTotal = precoTotal;
+    
     updateItem(id, data).then(() => {
       toast.success("Item atualizado com sucesso!");
       navigate("/itens");
@@ -70,6 +74,7 @@ function UpdateItemComponent() {
       setValue("preco", floatValue);
     }
   }
+
   if (usuario === null) {
     return <Navigate to="/" />;
   }
