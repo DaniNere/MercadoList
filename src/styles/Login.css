@@ -9,13 +9,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 320px; /* Ocupa toda a largura da viewport */
+  width: 320px; 
   padding: 20px;
   max-width: 100%;
   background-color: #f2f2f2;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ajustada conforme necessário */
-  margin-top: 2rem; /* Ajuste de margem superior */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  margin-top: 2rem; 
   margin-bottom: auto;
 }
 
