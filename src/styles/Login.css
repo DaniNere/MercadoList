@@ -4,7 +4,6 @@
   align-items: center;
   height: 100vh; 
 }
-/* Container principal do formulário de login */
 .login-container {
   display: flex;
   justify-content: center;
@@ -25,14 +24,12 @@
   margin-bottom: 30px;
 }
 
-/* Seção do formulário de login */
 .login-form {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-/* Estilo dos campos de input no formulário */
 .login-form__input-group {
   margin-bottom: 15px;
 }
@@ -57,13 +54,11 @@
   box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
 }
 
-/* Mensagens de erro */
 .login-form__error-message {
   color: red;
   font-size: 12px;
 }
 
-/* Botões do formulário */
 .login-form__button {
   padding: 10px;
   border: none;
@@ -80,7 +75,7 @@
 }
 
 .login-form__button--submit:hover {
-  background-color: #0f96b4; /* Remove o efeito de hover */
+  background-color: #0f96b4; 
 }
 
 .login-form__button--google {
@@ -105,4 +100,3 @@
   text-align: center;
 }
 
-/* Removido as classes desnecessárias para evitar conflitos */

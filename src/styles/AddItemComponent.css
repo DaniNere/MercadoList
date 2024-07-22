@@ -87,7 +87,7 @@ button.btn-custom {
 }
 
 button.btn-custom:hover {
-  background-color: #0f96b4; /* Remove o efeito de hover */
+  background-color: #0f96b4; 
 }
 
 button.variant-dark {
@@ -96,7 +96,7 @@ button.variant-dark {
 }
 
 button.variant-dark:hover {
-  background-color: #010337; /* Remove o efeito de hover */
+  background-color: #010337; 
 }
 
 .botoes-add-item {
