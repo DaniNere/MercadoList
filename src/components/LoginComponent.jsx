@@ -74,7 +74,7 @@ function LoginComponent() {
                 <small className="login-form__error-message">{errors.senha.message}</small>
               )}
             </div>
-            <Button className="login-form__button login-form__button--submit" type="submit">
+            <Button className="login-form__button btn-custom login-form__button--submit" type="submit">
               Entrar
             </Button>
             <Button
