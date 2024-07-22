@@ -19,12 +19,12 @@
   background-color: #f2f2f2;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-  margin-top: 2rem;
+  margin-top: 3rem;
+  color: #010337;
 }
 
 .h1-add-item {
   text-align: center;
-  color: #333;
   margin-bottom: 30px;
 }
 

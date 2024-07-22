@@ -15,8 +15,14 @@
   background-color: #f2f2f2;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-  margin-top: 2rem; 
+  margin-top: 3rem; 
   margin-bottom: auto;
+  color: #010337;
+}
+
+.login-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 /* Seção do formulário de login */
@@ -81,7 +87,6 @@
   background-color: #dc3545;
   color: #fff;
   display: flex;
-  align-items: center;
   justify-content: center;
   position: relative;
 }
@@ -91,8 +96,8 @@
 }
 
 .login-form__google-icon {
-  left: 10px;
-  position: absolute;
+  margin: 4px 8px 6px 0;
+  text-align: center;
 }
 
 .login-form__google-text {
