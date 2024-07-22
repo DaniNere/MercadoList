@@ -5,7 +5,7 @@ import { useNavigate, useParams, Navigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { NumericFormat } from "react-number-format";
 import "../styles/AddItemComponent.css";
-import { getItem, updateItem } from "../firebase/itens"; 
+import { getItem, updateItem } from "../firebase/itens";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 
 function UpdateItemComponent() {
@@ -40,11 +40,20 @@ function UpdateItemComponent() {
   function atualizarItem(data) {
     data.quantidade = numero;
     data.precoTotal = precoTotal;
-    
-    updateItem(id, data).then(() => {
-      toast.success("Item atualizado com sucesso!");
-      navigate("/itens");
-    });
+
+    updateItem(id, data)
+      .then(() => {
+        toast.success("Item atualizado com sucesso!");
+        navigate("/itens");
+      })
+      .catch((error) => {
+        if (error.code === 'permission-denied') {
+          toast.error("Permissão negada para atualizar este item.");
+        } else {
+          toast.error("Permissão negada.");
+        }
+        console.error("Permissão negada:", error);
+      });
   }
 
   useEffect(() => {
