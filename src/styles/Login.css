@@ -1,17 +1,15 @@
-.form-section {
-  width: 320px;
-  margin: 16px auto;
-}
-
-.invalid {
-  color: red;
-}
-
-.container {
+.page-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 320px !important;
+  height: 100vh; /* Ocupa a altura total da viewport */
+}
+/* Container principal do formulário de login */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 320px; /* Ocupa toda a largura da viewport */
   padding: 20px;
   max-width: 100%;
   background-color: #f2f2f2;
@@ -21,27 +19,25 @@
   margin-bottom: auto;
 }
 
-h1 {
-  text-align: center;
-  color: #333;
-}
-
-.form-section {
+/* Seção do formulário de login */
+.login-form {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.form-section div {
+/* Estilo dos campos de input no formulário */
+.login-form__input-group {
   margin-bottom: 15px;
 }
 
-label {
+.login-form__label {
   margin-bottom: 5px;
   font-weight: bold;
   display: block;
 }
 
-input.form-control {
+.login-form__input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ced4da;
@@ -49,65 +45,58 @@ input.form-control {
   box-sizing: border-box;
 }
 
-input.form-control:focus {
+.login-form__input:focus {
   border-color: #11afd1;
   outline: none;
   box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
 }
 
-small.invalid {
+/* Mensagens de erro */
+.login-form__error-message {
   color: red;
   font-size: 12px;
 }
 
-button {
+/* Botões do formulário */
+.login-form__button {
   padding: 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-}
-
-button.mt-1 {
-  margin-top: 10px;
-}
-
-button.w-100 {
   width: 100%;
 }
 
-button.btn-custom {
+.login-form__button--submit {
   background-color: #11afd1;
   color: #fff;
 }
 
-button.btn-custom:hover {
+.login-form__button--submit:hover {
   background-color: #0f96b4; /* Remove o efeito de hover */
 }
 
-button.variant-danger {
+.login-form__button--google {
   background-color: #dc3545;
   color: #fff;
-}
-
-button.variant-danger:hover {
-  background-color: #c82333;
-}
-
-.btn-google {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
 
-.icon-google {
+.login-form__button--google:hover {
+  background-color: #c82333;
+}
+
+.login-form__google-icon {
   left: 10px;
   position: absolute;
 }
 
-.btn-text {
+.login-form__google-text {
   flex: 1;
   text-align: center;
 }
 
+/* Removido as classes desnecessárias para evitar conflitos */

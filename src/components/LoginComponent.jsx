@@ -41,51 +41,55 @@ function LoginComponent() {
   }
 
   return (
-    <main className="container">
-      <form className="form-section" onSubmit={handleSubmit(entrar)}>
-        <h1>Login</h1>
+    <div className="page-wrapper">
+      <div className="login-container">
+        <div className="login-form">
+          <form onSubmit={handleSubmit(entrar)}>
+            <h1>Login</h1>
 
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            className="form-control"
-            {...register("email", { required: "O email é obrigatório" })}
-          />
-          {errors.email && (
-            <small className="invalid">{errors.email.message}</small>
-          )}
+            <div className="login-form__input-group">
+              <label htmlFor="email" className="login-form__label">Email</label>
+              <input
+                type="email"
+                id="email"
+                className="login-form__input"
+                {...register("email", { required: "O email é obrigatório" })}
+              />
+              {errors.email && (
+                <small className="login-form__error-message">{errors.email.message}</small>
+              )}
+            </div>
+            <div className="login-form__input-group">
+              <label htmlFor="senha" className="login-form__label">Senha</label>
+              <input
+                type="password"
+                id="senha"
+                className="login-form__input"
+                {...register("senha", {
+                  required: "A senha é obrigatória",
+                  minLength: { value: 6, message: "Mínimo de 6 caracteres." },
+                })}
+              />
+              {errors.senha && (
+                <small className="login-form__error-message">{errors.senha.message}</small>
+              )}
+            </div>
+            <Button className="login-form__button login-form__button--submit" type="submit">
+              Entrar
+            </Button>
+            <Button
+              onClick={handleEntrarGoogle}
+              variant="danger"
+              className="login-form__button login-form__button--google"
+              type="button"
+            >
+              <FaGoogle className="login-form__google-icon" />
+              <span className="login-form__google-text">Entrar com o Google</span>
+            </Button>
+          </form>
         </div>
-        <div>
-          <label htmlFor="senha">Senha</label>
-          <input
-            type="password"
-            id="senha"
-            className="form-control"
-            {...register("senha", {
-              required: "A senha é obrigatória",
-              minLength: { value: 6, message: "Mínimo de 6 caracteres." },
-            })}
-          />
-          {errors.senha && (
-            <small className="invalid">{errors.senha.message}</small>
-          )}
-        </div>
-        <Button className="mt-1 w-100 btn-custom" type="submit">
-          Entrar
-        </Button>
-        <Button
-          onClick={handleEntrarGoogle}
-          variant="danger"
-          className="mt-1 w-100 btn-google"
-          type="button"
-        >
-          <FaGoogle className="icon-google" />
-          <span>Entrar com o Google</span>
-        </Button>
-      </form>
-    </main>
+      </div>
+    </div>
   );
 }
 
