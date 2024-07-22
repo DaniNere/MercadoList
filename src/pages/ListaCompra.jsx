@@ -13,7 +13,7 @@ function ListaCompra() {
   const [precoTotal, setPrecoTotal] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-  const [isLoading, setIsLoading] = useState(true); // Estado para controle de carregamento
+  const [isLoading, setIsLoading] = useState(true); 
   const usuario = useContext(UsuarioContext);
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ function ListaCompra() {
 
   function carregarItens() {
     if (usuario?.usuarioLogado) {
-      setIsLoading(true); // Começar o carregamento
+      setIsLoading(true); 
       getItensUsuario(usuario.usuarioLogado.uid)
         .then((resultado) => {
           setCompras(resultado);
@@ -36,7 +36,7 @@ function ListaCompra() {
           toast.error("Erro ao carregar itens");
         })
         .finally(() => {
-          setIsLoading(false); // Finalizar o carregamento
+          setIsLoading(false); 
         });
     }
   }

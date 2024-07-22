@@ -14,12 +14,12 @@
   padding: 0;
 }
 
-.container-navbar ul .link-login, /* Adiciona a classe para link-login */
-.container-navbar ul a { /* Adiciona o estilo para todas as tags 'a' dentro de 'ul' */
+.container-navbar ul .link-login, 
+.container-navbar ul a { 
   margin-right: 20px;
   cursor: pointer;
   color: white;
-  text-decoration: none; /* Remove o sublinhado dos links */
+  text-decoration: none; 
 }
 
 .container-navbar ul a:last-child {
