@@ -1,6 +1,6 @@
-# MercadoList
+                                                                    # MercadoList
 
-MercadoList é uma aplicação de lista de compras desenvolvida com React e Firebase. Este projeto permite aos usuários gerenciar suas compras de forma eficiente com funcionalidades de autenticação, CRUD de itens e proteção de rotas.
+MercadoList é uma aplicação de lista de compras desenvolvida com Html, CSs, React e Firebase. Este projeto permite aos usuários gerenciar suas compras de forma eficiente com funcionalidades de autenticação, CRUD de itens e proteção de rotas.
 
 ## Índice
 
